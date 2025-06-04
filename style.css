@@ -1,5 +1,4 @@
 :root {
-    /* Day Theme (Default) */
     --bg-screen-1-day: #D9D9E5;
     --bg-screen-2-day: #B1B1D5;
     --text-screen-day: #37387B;
@@ -11,14 +10,14 @@
     --switcher-bg-day: #42438c;
     --switcher-text-day: #e4e4ff;
     --switcher-border-day: #42438c;
-    --content-block-bg-day: #FFFFFF; /* Common for S2-S6 blocks */
-    --s1-bg-image: url('intro.jpg'); /* Common image for screen 1 */
+    --content-block-bg-day: #FFFFFF;
+    --s1-bg-image: url('intro.jpg');
     --s1-block-bg-day: #e4e4ff; 
     --s1-text-day: #37387B; 
     --s1-paragraph-text-day: #C7C8E0;
-    --s1-attribution-text-day: rgb(198, 198, 198); /* For S1 image attribution */
+    --s1-attribution-text-day: rgb(198, 198, 198);
+    --s1-block-bg-transparent-day: rgba(228, 228, 255, 0.654); /* Transparent S1 block bg for day */
 
-    /* Default to day theme variables */
     --bg-screen-1: var(--bg-screen-1-day);
     --bg-screen-2: var(--bg-screen-2-day);
     --text-screen: var(--text-screen-day);
@@ -30,15 +29,15 @@
     --switcher-bg: var(--switcher-bg-day);
     --switcher-text: var(--switcher-text-day);
     --switcher-border: var(--switcher-border-day);
-    --content-block-bg: var(--content-block-bg-day); /* Default for S2-S6 blocks */
+    --content-block-bg: var(--content-block-bg-day);
     --s1-block-bg: var(--s1-block-bg-day);
     --s1-text: var(--s1-text-day);
     --s1-paragraph-text: var(--s1-paragraph-text-day);
     --s1-attribution-text: var(--s1-attribution-text-day);
+    --s1-block-bg-transparent: var(--s1-block-bg-transparent-day); /* Transparent S1 block bg */
 }
 
 body.night-theme {
-    /* Night Theme Overrides */
     --bg-screen-1: #111145;
     --bg-screen-2: #272759;
     --text-screen: #C7C8E0;
@@ -50,55 +49,51 @@ body.night-theme {
     --switcher-bg: #42438c;
     --switcher-text: #e4e4ff;
     --switcher-border: #626292;
-    --content-block-bg: #42438c; /* For S2-S6 blocks */
-    /* --s1-bg-image remains url('intro.jpg') */
+    --content-block-bg: #42438c;
     --s1-block-bg: #373977; 
     --s1-text: #C7C8E0; 
     --s1-paragraph-text: #C7C8E0; 
-    --s1-attribution-text: #C7C8E0; /* Assuming attribution text also changes */
+    --s1-attribution-text: #C7C8E0;
+    --s1-block-bg-transparent: rgba(55, 57, 119, 0.726); /* Transparent S1 block bg for night */
 }
 
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Saira', sans-serif; /* Changed default font to Saira */
-    overflow-x: hidden; /* Disable horizontal scroll */
+    font-family: 'Saira', sans-serif;
+    overflow-x: hidden;
 
-    /* Hide scrollbar for WebKit browsers */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
-    /* Enable vertical scroll snapping */
     scroll-snap-type: y mandatory;
-    scroll-behavior: smooth; /* Add smooth scrolling */
-    background-color: var(--bg-screen-1); /* Set a base background for the body */
+    scroll-behavior: smooth;
+    background-color: var(--bg-screen-1);
 }
 
-/* Hide scrollbar for WebKit browsers (Chrome, Safari, newer Edge) */
 body::-webkit-scrollbar {
     display: none;
 }
 
-/* Side Navigation */
 .side-nav {
-    position: fixed; /* Fixed position to stay in place during scroll */
-    top: 50%; /* Center vertically */
-    left: 20px; /* Distance from the left edge */
-    transform: translateY(-50%); /* Fine-tune vertical centering */
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
     display: flex;
-    flex-direction: column; /* Stack dots vertically */
-    gap: 15px; /* Space between dots */
-    z-index: 1000; /* Ensure it's above other content */
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
 }
 
 .nav-dot {
     width: 12px;
     height: 12px;
     background-color: var(--nav-dot-inactive-bg);
-    border-radius: 50%; /* Make it a circle */
+    border-radius: 50%;
     border: 2px solid var(--nav-dot-inactive-border);
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for color changes */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-dot.active {
@@ -106,25 +101,23 @@ body::-webkit-scrollbar {
     border-color: var(--nav-dot-active-border);
 }
 
-/* General .screen styles (ensure they are compatible) */
 .screen {
-    width: 100vw; 
-    height: 100vh; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    font-size: 2em; 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
     color: var(--text-screen);
-    scroll-snap-align: start; 
-    overflow: hidden; /* Add this to prevent content from one screen bleeding into another */
+    scroll-snap-align: start;
+    overflow: hidden;
 }
 
-/* Screen 1 specific styles */
 #screen-1 {
-    padding: 40px 20px; 
+    padding: 40px 20px;
     box-sizing: border-box;
-    position: relative; 
-    background-image: var(--s1-bg-image); /* Use CSS variable for theme-dependent image */
+    position: relative;
+    background-image: var(--s1-bg-image);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -134,16 +127,16 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px; /* Space between title and text block */
+    gap: 25px;
     width: 85%;
-    max-width: 950px; /* Increased from 900px to give title more room */
+    max-width: 950px;
     text-align: center;
-    z-index: 1; /* Retained for stacking within screen 1 */
+    z-index: 1;
 }
 
 .title-block-s1, .text-block-s1 {
     background-color: var(--s1-block-bg);
-    color: var(--s1-text); /* Text color will be inherited from .screen but can be set explicitly */
+    color: var(--s1-text);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -156,38 +149,38 @@ body::-webkit-scrollbar {
 
 
 .title-block-s1 h1 {
-    font-size: clamp(1.3em, 3.5vw, 3.0em); /* Made way bigger, allowing wrapping */
+    font-size: clamp(1.3em, 3.5vw, 3.0em);
     margin: 0;
     font-weight: 700;
-    display: block; /* Ensure it takes up the expected space */
+    display: block;
 }
 
 .text-block-s1 p {
-    font-size: clamp(0.95em, 1.5vw, 1.15em); /* Adjusted for a slightly smaller size */
+    font-size: clamp(0.95em, 1.5vw, 1.15em);
     line-height: 1.7;
     margin: 0;
-    color: var(--s1-paragraph-text); /* Use consistent color for S1 paragraphs */
-    text-align: center; /* Explicitly center main paragraph */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* RE-ADDED text shadow for paragraph readability */
+    color: var(--s1-paragraph-text);
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 .image-attribution {
     font-style: italic;
-    font-size: clamp(0.75em, 1vw, 0.85em); /* Smaller and responsive */
-    text-align: center; /* Changed from right to center */
-    color: var(--s1-attribution-text); /* Use consistent color for S1 paragraphs */
-    margin-top: 20px; /* Adds some space above the attribution line */
-    margin-bottom: 0; /* Ensure no extra bottom margin */
+    font-size: clamp(0.75em, 1vw, 0.85em);
+    text-align: center;
+    color: var(--s1-attribution-text);
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .author-line {
-    font-size: clamp(0.75em, 1vw, 0.85em); /* Same size as attribution */
-    text-align: center; /* Changed from right to center */
-    color: var(--s1-paragraph-text); /* Use consistent color for S1 paragraphs */
-    opacity: 0.75; /* Slightly less prominent */
-    font-weight: bold; /* Make author name bold */
-    margin-top: 5px; /* Space between attribution and author */
-    margin-bottom: 0; /* Ensure no extra bottom margin */
+    font-size: clamp(0.75em, 1vw, 0.85em);
+    text-align: center;
+    color: var(--s1-paragraph-text);
+    opacity: 0.75;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .scroll-indicator-s1 {
@@ -198,17 +191,16 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1; /* Retained for stacking within screen 1 */
+    z-index: 1;
 }
 
 .scroll-indicator-s1 .material-symbols-outlined {
-    font-size: clamp(30px, 5vw, 40px); /* Responsive icon size */
+    font-size: clamp(30px, 5vw, 40px);
     color: var(--text-screen-arrow);
-    line-height: 0.5; /* Stack them closer */
+    line-height: 0.5;
     opacity: 0.7;
 }
 
-/* Animation for the scroll indicator arrows */
 @keyframes bounce-arrow {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -234,11 +226,10 @@ body::-webkit-scrollbar {
     animation: bounce-arrow 2.2s infinite 0.5s;
 }
 
-/* === Common Layout Styles for Screens 2-6 (Desktop) === */
-.page-screen-content-wrapper { /* Replaces .main-content-sX for S2-S6 */
+.page-screen-content-wrapper {
     width: 90%;
     max-width: 1600px;
-    height: 100%; /* Changed from min-height: 100vh; to ensure fixed height based on .screen */
+    height: 100%;
     padding: 8vh 0;
     box-sizing: border-box;
     display: flex;
@@ -249,7 +240,7 @@ body::-webkit-scrollbar {
     margin-right: auto;
 }
 
-.content-layout-area { /* Replaces .content-area-sX for S2-S6 */
+.content-layout-area {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -260,7 +251,7 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
 }
 
-.content-column { /* Replaces .left-column-sX and .right-column-sX for S2-S6 */
+.content-column {
     width: calc(50% - 15px); 
     display: flex;
     flex-direction: column;
@@ -268,7 +259,7 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
 }
 
-.info-title-block { /* Replaces .title-block-sX for S2-S6 */
+.info-title-block {
     background-color: var(--content-block-bg);
     color: var(--text-screen);
     padding: 20px 25px;
@@ -283,13 +274,12 @@ body::-webkit-scrollbar {
     font-size: clamp(1.4em, 2.8vw, 2.0em); 
     margin: 0;
     font-weight: 700; 
-    /* font-family will be applied by a later rule */
 }
 
-.info-text-block { /* Replaces .text-block-sX for S2-S6 */
+.info-text-block {
     background-color: var(--content-block-bg);
     color: var(--text-screen);
-    padding: 25px 35px; /* Adjusted left/right padding */
+    padding: 25px 35px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     width: 100%; 
@@ -297,36 +287,35 @@ body::-webkit-scrollbar {
     flex-grow: 1; 
     box-sizing: border-box;
     min-height: 0; 
-    overflow-y: auto; /* Enable vertical scrollbar */
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: var(--nav-dot-active-bg) var(--content-block-bg); /* For Firefox: thumb and track */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--nav-dot-active-bg) var(--content-block-bg);
 }
 
-/* Custom WebKit scrollbar styles for .info-text-block */
 .info-text-block::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+    width: 10px;
 }
 
 .info-text-block::-webkit-scrollbar-track {
-    background: var(--content-block-bg); /* Track color same as block background */
-    border-radius: 10px; /* Rounded track */
+    background: var(--content-block-bg);
+    border-radius: 10px;
 }
 
 .info-text-block::-webkit-scrollbar-thumb {
-    background-color: var(--nav-dot-active-bg); /* Thumb color same as active nav dot */
-    border-radius: 10px; /* Rounded thumb */
-    border: 2px solid var(--content-block-bg); /* Creates an inset effect, making thumb appear thinner */
+    background-color: var(--nav-dot-active-bg);
+    border-radius: 10px;
+    border: 2px solid var(--content-block-bg);
 }
 
 .info-text-block p { 
-    font-size: clamp(0.85em, 0.7vw, 1.0em); /* Adjusted font size to be smaller */
+    font-size: clamp(0.85em, 0.7vw, 1.0em);
     line-height: 1.4;
     margin: 0;
     margin-bottom: 10px;
-    text-align: left; /* Justify text alignment */
+    text-align: left;
 }
 
-.info-image-placeholder { /* Replaces .image-placeholder-sX for S2-S6 */
+.info-image-placeholder {
     width: calc(50% - 15px);
     background-color: var(--content-block-bg);
     color: var(--text-screen);
@@ -342,19 +331,18 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
 }
 
-/* Styles for when the placeholder contains an actual image */
 .info-image-placeholder.has-image {
-    padding: 0; /* Remove padding to let image fill the space */
-    border: none; /* Remove dashed border */
-    opacity: 1;   /* Restore full opacity */
-    background-color: #080610; /* Added background color */
+    padding: 0;
+    border: none;
+    opacity: 1;  
+    background-color: #080610;
 }
 
 .info-image-placeholder.has-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Show full image, may leave empty space */
-    border-radius: 8px; /* Match the original placeholder's rounding */
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .info-image-placeholder p { 
@@ -362,31 +350,23 @@ body::-webkit-scrollbar {
     font-size: clamp(1em, 2.2vw, 1.2em); 
     margin: 0;
 }
-/* === End of Common Layout Styles for Screens 2-6 (Desktop) === */
 
-/* Styles for subsequent screens - REMOVING Z-INDEX */
 #screen-2 {
-    /* z-index: 2; REMOVED */
 }
 
 #screen-3 {
-    /* z-index: 3; REMOVED */
 }
 
 #screen-4 {
-    /* z-index: 4; REMOVED */
 }
 
 #screen-5 {
-    /* z-index: 5; REMOVED */
 }
 
 #screen-6 {
-    /* z-index: 6; REMOVED */
 }
 
-/* Ensure background colors are applied, these rules come after .screen */
-#screen-3, #screen-5 { /* #screen-1 removed from this rule */
+#screen-3, #screen-5 {
     background-color: var(--bg-screen-1);
 }
 
@@ -402,9 +382,9 @@ body::-webkit-scrollbar {
     background-color: var(--switcher-bg);
     color: var(--switcher-text);
     border: 1px solid var(--switcher-border);
-    border-radius: 20px; /* Increased for rounder corners */
+    border-radius: 20px;
     cursor: pointer;
-    z-index: 1001; /* Above side-nav */
+    z-index: 1001;
     font-size: 1rem;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
 }
@@ -413,94 +393,213 @@ body::-webkit-scrollbar {
     filter: brightness(85%);
 }
 
-/* Styling for the icon span within the switcher button */
 #theme-icon-span {
-    font-family: 'Material Symbols Outlined'; /* Ensure the icon font is applied */
-    font-size: 20px; /* Adjust size as needed */
-    line-height: 1; /* Helps with vertical alignment */
-    vertical-align: middle; /* Align icon with button text/center if button was just icon */
+    font-family: 'Material Symbols Outlined';
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
 }
 
-/* === Responsive Styles === */
+@media (max-width: 799px) {
+    .screen {
+        flex-direction: column;
+    }
+    .desktop-view {
+        display: none !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        visibility: hidden !important;
+    }
+    .side-nav {
+        display: none !important;
+    }
+    .scroll-indicator-s1 {
+        bottom: 20px;
+    }
 
-/* General Responsive (Tablet and larger phones) */
-@media (max-width: 768px) {
-    /* Screen 1 content adjustments */
+    .mobile-view {
+        display: block !important;
+        width: 100%;
+        height: auto;
+    }
+    .side-nav-mobile {
+        position: fixed;
+        top: 20px; 
+        left: 50%; 
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: row; 
+        width: auto; 
+        gap: 8px;
+        z-index: 1000;
+        padding: 5px;
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    .side-nav-mobile .nav-dot {
+        width: 8px; 
+        height: 8px; 
+        border-width: 1.5px;
+    }
+
+    #screen-1.screen {
+         height: 100vh;
+         overflow: hidden;
+    }
+    #screen-2.screen,
+    #screen-3.screen,
+    #screen-4.screen,
+    #screen-5.screen,
+    #screen-6.screen {
+        height: auto;
+        overflow: visible;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .mobile-sub-screen {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        scroll-snap-align: start;
+        overflow: hidden;
+        padding: 20px;
+        box-sizing: border-box;
+        color: var(--text-screen);
+    }
+
+    .mobile-image-part {
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #080610;
+        text-align: center;
+        position: relative;
+    }
+
+    /* Moved and combined background image rules here */
+    #screen-2-img.mobile-image-part {
+        background-image: url('section_1.png');
+        /* background-color: red; */ /* TEMP DEBUG */
+    }
+    #screen-3-img.mobile-image-part {
+        background-image: url('section_2.png');
+        /* background-color: blue; */ /* TEMP DEBUG */
+    }
+    #screen-4-img.mobile-image-part {
+        background-image: url('section_3.png');
+        /* background-color: green; */ /* TEMP DEBUG */
+    }
+    #screen-5-img.mobile-image-part {
+        background-image: url('section_4.png');
+        /* background-color: yellow; */ /* TEMP DEBUG */
+    }
+    #screen-6-img.mobile-image-part {
+        background-image: url('section_5.png');
+        /* background-color: orange; */ /* TEMP DEBUG */
+    }
+
+    .mobile-image-part .info-title-block {
+        background-color: var(--s1-block-bg-transparent); /* Use transparent variable */
+        color: var(--s1-text);
+        padding: 15px 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        width: auto;
+        max-width: 80%;
+        z-index: 1;
+    }
+     .mobile-image-part .info-title-block h2 {
+        font-size: clamp(0.7em, 5.5vw, 1.8em); /* Adjusted for more scaling */
+        color: var(--s1-text);
+     }
+
+    .mobile-text-part {
+        justify-content: flex-start;
+        padding-top: 70px;
+        background-color: var(--bg-screen-2);
+    }
+    #screen-2-txt, #screen-4-txt, #screen-6-txt { background-color: var(--bg-screen-2); }
+    #screen-3-txt, #screen-5-txt { background-color: var(--bg-screen-1); }
+    
+    .mobile-text-part .info-title-block {
+        width: 90%;
+        max-width: 500px;
+        margin-bottom: 20px;
+        padding: 15px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .mobile-text-part .info-title-block h2 {
+        font-size: clamp(1.0em, 4.5vw, 1.6em); /* Adjusted for more scaling */
+    }
+    .mobile-text-part .info-text-block {
+        width: 90%;
+        max-width: 500px;
+        max-height: calc(100vh - 180px);
+        overflow-y: auto;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: var(--content-block-bg);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        scrollbar-width: thin; 
+        scrollbar-color: var(--nav-dot-active-bg) var(--content-block-bg);
+    }
+    .mobile-text-part .info-text-block::-webkit-scrollbar { width: 8px; }
+    .mobile-text-part .info-text-block::-webkit-scrollbar-track { background: var(--content-block-bg); border-radius: 8px;}
+    .mobile-text-part .info-text-block::-webkit-scrollbar-thumb { background-color: var(--nav-dot-active-bg); border-radius: 8px; border: 2px solid var(--content-block-bg); }
+
+    .mobile-text-part .info-text-block p {
+        font-size: clamp(0.9em, 3.5vw, 1.0em);
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    /* Existing user rules for this nested block */
     #screen-1 { padding: 25px 15px; }
     .main-content-s1 { gap: 20px; width: 90%; }
     .title-block-s1, .text-block-s1 { padding: 20px; }
-
-    /* General .screen font size adjustment */
-    .screen { font-size: 1.6em; }
-
-    /* Side Navigation Responsive */
-    .side-nav {
-        top: 20px; left: 50%; transform: translateX(-50%);
-        flex-direction: row; width: auto; gap: 10px;
-    }
-    .nav-dot { width: 10px; height: 10px; border-width: 1.5px; }
-
-    /* Theme Switcher Responsive */
     #theme-switcher { top: 20px; right: 15px; }
 
-    /* Screen 1 Scroll Indicator Responsive */
-    .scroll-indicator-s1 { bottom: 20px; }
+    /* Reinserting the @media (max-width: 480px) block */
+    @media (max-width: 480px) {
+        .side-nav-mobile { gap: 5px; padding: 3px; }
+        .side-nav-mobile .nav-dot { width: 7px; height: 7px; }
+        #screen-1 { padding: 15px 5px; }
+        .main-content-s1 { gap: 10px; width: 96%; }
+        .title-block-s1, .text-block-s1 { padding: 10px; }
+        #theme-switcher { top: 15px; right: 10px; }
+        #theme-icon-span { font-size: 16px; }
+        .scroll-indicator-s1 { bottom: 15px; }
 
-    /* Common Components for Screens 2-6: Responsive */
-    .page-screen-content-wrapper {
-        width: 90%; 
-        min-height: auto; 
-        padding: 2vh 15px; 
-        justify-content: space-around; 
-    }
-    .content-layout-area {
-        flex-direction: column; 
-        gap: 20px; 
-    }
-    .content-column, .info-image-placeholder { /* Both stack and take full width */
-        width: 100%; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .content-column { gap: 15px; } /* Gap within the column of title/text */
-    .info-title-block { padding: 15px; }
-    .info-title-block h2 { font-size: clamp(1.3em, 5vw, 1.8em); }
-    .info-text-block { 
-        text-align: left; 
-        flex-grow: 0; 
-        padding: 15px;
-    }
-    .info-image-placeholder { min-height: 25vh; }
-
-    /* Specific order for screens 3 and 5 on tablet */
-    #screen-3 .info-image-placeholder, /* Keep ID for specificity if needed, or make a generic modifier class */
-    #screen-5 .info-image-placeholder {
-        order: -1; 
+        .mobile-text-part .info-title-block {
+            /* top: 70px; */
+        }
+        .mobile-text-part .info-text-block {
+            max-height: calc(100vh - 160px);
+            padding: 15px;
+        }
+        .mobile-text-part .info-text-block p { font-size: clamp(0.85em, 3.2vw, 0.95em); line-height: 1.55; }
     }
 }
 
-/* General Responsive (Smaller phones) */
-@media (max-width: 480px) {
-    /* Screen 1 Responsive */
+@media (max-width: 729px) {
     #screen-1 { padding: 15px 5px; }
     .main-content-s1 { gap: 10px; width: 96%; }
     .title-block-s1, .text-block-s1 { padding: 10px; }
-
-    /* General .screen font size adjustment */
     .screen { font-size: 1.4em; }
-
-    /* Side Navigation Responsive */
     .side-nav { top: 15px; gap: 8px; }
     .nav-dot { width: 8px; height: 8px; }
-
-    /* Theme Switcher Responsive */
     #theme-switcher { top: 15px; right: 10px; }
     #theme-icon-span { font-size: 16px; }
-
-    /* Screen 1 Scroll Indicator Responsive */
     .scroll-indicator-s1 { bottom: 15px; }
-
-    /* Common Components for Screens 2-S6: Responsive */
     .page-screen-content-wrapper {
         width: 95%; 
         padding: 2vh 10px; 
@@ -516,13 +615,45 @@ body::-webkit-scrollbar {
     .info-text-block p { font-size: 0.88em; line-height: 1.55; }
     
     .info-image-placeholder { min-height: 15vh; }
-    /* order: -1 for S3/S5 image placeholder is inherited from 768px media query */
 }
 
-/* === Font Application === */
 .title-block-s1 h1,
-.info-title-block h2 { /* This is now the primary rule for S2-S6 titles */
+.info-title-block h2 {
     font-family: 'Rowdies', sans-serif;
 }
 
-/* The old grouped selector for .title-block-sX h2 will be removed if present, or this rule is sufficient */
+@media (min-width: 800px) {
+    .screen {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #screen-2.screen,
+    #screen-3.screen,
+    #screen-4.screen,
+    #screen-5.screen,
+    #screen-6.screen {
+        height: 100vh;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .desktop-view {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobile-view {
+        display: none;
+    }
+    .side-nav {
+        display: flex;
+    }
+    .side-nav-mobile {
+        display: none;
+    }
+}
