@@ -1,27 +1,46 @@
 :root {
-    /* Day Theme (Default) - From colors.txt */
-    --bg-screen-1: #D9D9E5;
-    --bg-screen-2: #B1B1D5;
-    --text-screen: #37387B;
-    --text-screen-arrow: #C7C8E0;
-    --nav-dot-inactive-bg: #8384bd;
-    --nav-dot-inactive-border: #8384bd;
-    --nav-dot-active-bg: #4D4E91;
-    --nav-dot-active-border: #37387B;
-    --switcher-bg: #42438c;
-    --switcher-text: #e4e4ff;
-    --switcher-border: #42438c;
-    --block-background-s1: #FFFFFF; /* Background for general blocks (screens 2-6) */
-    --bg-image-s1: url('intro_light.jpg'); /* Light theme image for screen 1 */
-    --block-background-intro-s1: #e4e4ff; /* Background for blocks on screen 1 (Light) */
-    --text-screen-intro: #37387B; /* Reverted: Text color for screen 1 H1 (Light) */
-    --s1-paragraph-text: #C7C8E0; /* New: Consistent color for S1 paragraphs */
+    /* Day Theme (Default) */
+    --bg-screen-1-day: #D9D9E5;
+    --bg-screen-2-day: #B1B1D5;
+    --text-screen-day: #37387B;
+    --text-screen-arrow-day: #C7C8E0;
+    --nav-dot-inactive-bg-day: #8384bd;
+    --nav-dot-inactive-border-day: #8384bd;
+    --nav-dot-active-bg-day: #4D4E91;
+    --nav-dot-active-border-day: #37387B;
+    --switcher-bg-day: #42438c;
+    --switcher-text-day: #e4e4ff;
+    --switcher-border-day: #42438c;
+    --content-block-bg-day: #FFFFFF; /* Common for S2-S6 blocks */
+    --s1-bg-image: url('intro.jpg'); /* Common image for screen 1 */
+    --s1-block-bg-day: #e4e4ff; 
+    --s1-text-day: #37387B; 
+    --s1-paragraph-text-day: #C7C8E0;
+    --s1-attribution-text-day: rgb(198, 198, 198); /* For S1 image attribution */
+
+    /* Default to day theme variables */
+    --bg-screen-1: var(--bg-screen-1-day);
+    --bg-screen-2: var(--bg-screen-2-day);
+    --text-screen: var(--text-screen-day);
+    --text-screen-arrow: var(--text-screen-arrow-day);
+    --nav-dot-inactive-bg: var(--nav-dot-inactive-bg-day);
+    --nav-dot-inactive-border: var(--nav-dot-inactive-border-day);
+    --nav-dot-active-bg: var(--nav-dot-active-bg-day);
+    --nav-dot-active-border: var(--nav-dot-active-border-day);
+    --switcher-bg: var(--switcher-bg-day);
+    --switcher-text: var(--switcher-text-day);
+    --switcher-border: var(--switcher-border-day);
+    --content-block-bg: var(--content-block-bg-day); /* Default for S2-S6 blocks */
+    --s1-block-bg: var(--s1-block-bg-day);
+    --s1-text: var(--s1-text-day);
+    --s1-paragraph-text: var(--s1-paragraph-text-day);
+    --s1-attribution-text: var(--s1-attribution-text-day);
 }
 
 body.night-theme {
-    /* Night Theme - From colors.txt */
+    /* Night Theme Overrides */
     --bg-screen-1: #111145;
-    --bg-screen-2: #2A2A66;
+    --bg-screen-2: #272759;
     --text-screen: #C7C8E0;
     --text-screen-arrow: #C7C8E0;
     --nav-dot-inactive-bg: #42438c;
@@ -31,10 +50,12 @@ body.night-theme {
     --switcher-bg: #42438c;
     --switcher-text: #e4e4ff;
     --switcher-border: #626292;
-    --block-background-s1: #42438c; /* Background for general blocks (screens 2-6, Night) */
-    --bg-image-s1: url('intro._dark.jpg'); /* Dark theme image for screen 1 */
-    --block-background-intro-s1: #373977; /* Restored: Background for blocks on screen 1 (Night) */
-    --text-screen-intro: #C7C8E0; /* Restored: Text color for screen 1 blocks (Night) */
+    --content-block-bg: #42438c; /* For S2-S6 blocks */
+    /* --s1-bg-image remains url('intro.jpg') */
+    --s1-block-bg: #373977; 
+    --s1-text: #C7C8E0; 
+    --s1-paragraph-text: #C7C8E0; 
+    --s1-attribution-text: #C7C8E0; /* Assuming attribution text also changes */
 }
 
 html, body {
@@ -103,7 +124,7 @@ body::-webkit-scrollbar {
     padding: 40px 20px; 
     box-sizing: border-box;
     position: relative; 
-    background-image: var(--bg-image-s1); /* Use CSS variable for theme-dependent image */
+    background-image: var(--s1-bg-image); /* Use CSS variable for theme-dependent image */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -121,8 +142,8 @@ body::-webkit-scrollbar {
 }
 
 .title-block-s1, .text-block-s1 {
-    background-color: var(--block-background-intro-s1);
-    color: var(--text-screen-intro); /* Text color will be inherited from .screen but can be set explicitly */
+    background-color: var(--s1-block-bg);
+    color: var(--s1-text); /* Text color will be inherited from .screen but can be set explicitly */
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -154,7 +175,7 @@ body::-webkit-scrollbar {
     font-style: italic;
     font-size: clamp(0.75em, 1vw, 0.85em); /* Smaller and responsive */
     text-align: center; /* Changed from right to center */
-    color: rgb(198, 198, 198); /* Use consistent color for S1 paragraphs */
+    color: var(--s1-attribution-text); /* Use consistent color for S1 paragraphs */
     margin-top: 20px; /* Adds some space above the attribution line */
     margin-bottom: 0; /* Ensure no extra bottom margin */
 }
@@ -171,7 +192,7 @@ body::-webkit-scrollbar {
 
 .scroll-indicator-s1 {
     position: absolute;
-    bottom: 25px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -212,6 +233,136 @@ body::-webkit-scrollbar {
 .scroll-indicator-s1 .material-symbols-outlined:nth-child(3) {
     animation: bounce-arrow 2.2s infinite 0.5s;
 }
+
+/* === Common Layout Styles for Screens 2-6 (Desktop) === */
+.page-screen-content-wrapper { /* Replaces .main-content-sX for S2-S6 */
+    width: 90%;
+    max-width: 1600px;
+    height: 100%; /* Changed from min-height: 100vh; to ensure fixed height based on .screen */
+    padding: 8vh 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-layout-area { /* Replaces .content-area-sX for S2-S6 */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.content-column { /* Replaces .left-column-sX and .right-column-sX for S2-S6 */
+    width: calc(50% - 15px); 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.info-title-block { /* Replaces .title-block-sX for S2-S6 */
+    background-color: var(--content-block-bg);
+    color: var(--text-screen);
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    width: 100%; 
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.info-title-block h2 { 
+    font-size: clamp(1.4em, 2.8vw, 2.0em); 
+    margin: 0;
+    font-weight: 700; 
+    /* font-family will be applied by a later rule */
+}
+
+.info-text-block { /* Replaces .text-block-sX for S2-S6 */
+    background-color: var(--content-block-bg);
+    color: var(--text-screen);
+    padding: 25px 35px; /* Adjusted left/right padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    width: 100%; 
+    text-align: left;
+    flex-grow: 1; 
+    box-sizing: border-box;
+    min-height: 0; 
+    overflow-y: auto; /* Enable vertical scrollbar */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: var(--nav-dot-active-bg) var(--content-block-bg); /* For Firefox: thumb and track */
+}
+
+/* Custom WebKit scrollbar styles for .info-text-block */
+.info-text-block::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.info-text-block::-webkit-scrollbar-track {
+    background: var(--content-block-bg); /* Track color same as block background */
+    border-radius: 10px; /* Rounded track */
+}
+
+.info-text-block::-webkit-scrollbar-thumb {
+    background-color: var(--nav-dot-active-bg); /* Thumb color same as active nav dot */
+    border-radius: 10px; /* Rounded thumb */
+    border: 2px solid var(--content-block-bg); /* Creates an inset effect, making thumb appear thinner */
+}
+
+.info-text-block p { 
+    font-size: clamp(0.85em, 0.7vw, 1.0em); /* Adjusted font size to be smaller */
+    line-height: 1.4;
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: left; /* Justify text alignment */
+}
+
+.info-image-placeholder { /* Replaces .image-placeholder-sX for S2-S6 */
+    width: calc(50% - 15px);
+    background-color: var(--content-block-bg);
+    color: var(--text-screen);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--text-screen); 
+    opacity: 0.6; 
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Styles for when the placeholder contains an actual image */
+.info-image-placeholder.has-image {
+    padding: 0; /* Remove padding to let image fill the space */
+    border: none; /* Remove dashed border */
+    opacity: 1;   /* Restore full opacity */
+    background-color: #080610; /* Added background color */
+}
+
+.info-image-placeholder.has-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Show full image, may leave empty space */
+    border-radius: 8px; /* Match the original placeholder's rounding */
+}
+
+.info-image-placeholder p { 
+    font-style: italic;
+    font-size: clamp(1em, 2.2vw, 1.2em); 
+    margin: 0;
+}
+/* === End of Common Layout Styles for Screens 2-6 (Desktop) === */
 
 /* Styles for subsequent screens - REMOVING Z-INDEX */
 #screen-2 {
@@ -270,1025 +421,108 @@ body::-webkit-scrollbar {
     vertical-align: middle; /* Align icon with button text/center if button was just icon */
 }
 
-/* Responsive adjustments for smaller screens */
+/* === Responsive Styles === */
+
+/* General Responsive (Tablet and larger phones) */
 @media (max-width: 768px) {
     /* Screen 1 content adjustments */
-    #screen-1 {
-        padding: 25px 15px; /* Reduce overall screen padding */
-    }
+    #screen-1 { padding: 25px 15px; }
+    .main-content-s1 { gap: 20px; width: 90%; }
+    .title-block-s1, .text-block-s1 { padding: 20px; }
 
-    .main-content-s1 {
-        gap: 20px; /* Reduce gap between title and text block */
-        width: 90%; /* Allow content to use a bit more width */
-    }
+    /* General .screen font size adjustment */
+    .screen { font-size: 1.6em; }
 
-    .title-block-s1, .text-block-s1 {
-        padding: 20px; /* Reduce padding inside content blocks */
-    }
-
-    /* Reduce font size for default h2 in screens 2-6 if they exist */
-    .screen {
-        font-size: 1.6em; /* Adjust base font size for screens */
-    }
-    /* Titles/text within screen-1 already use clamp() for responsive font sizes */
-
-    /* Side Navigation adjustments - moving to top */
+    /* Side Navigation Responsive */
     .side-nav {
-        position: fixed; /* Keep it fixed at the top */
-        top: 20px; /* Distance from the top */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Fine-tune horizontal centering */
-        flex-direction: row; /* Align dots horizontally */
-        width: auto; /* Allow width to be determined by content */
-        gap: 10px; 
-        z-index: 1000; 
+        top: 20px; left: 50%; transform: translateX(-50%);
+        flex-direction: row; width: auto; gap: 10px;
     }
+    .nav-dot { width: 10px; height: 10px; border-width: 1.5px; }
 
-    .nav-dot {
-        width: 10px;
-        height: 10px;
-        border-width: 1.5px;
-    }
+    /* Theme Switcher Responsive */
+    #theme-switcher { top: 20px; right: 15px; }
 
-    /* Theme Switcher adjustments - ensure it doesn't overlap badly */
-    #theme-switcher {
-        top: 20px; /* Align with new top nav or adjust if needed */
-        right: 15px;
-        /* padding: 7px 10px; - from previous, might need slight adjustment if nav is too wide */
-    }
+    /* Screen 1 Scroll Indicator Responsive */
+    .scroll-indicator-s1 { bottom: 20px; }
 
-    /* Scroll Indicator adjustments */
-    .scroll-indicator-s1 {
-        bottom: 20px; /* Move slightly up */
+    /* Common Components for Screens 2-6: Responsive */
+    .page-screen-content-wrapper {
+        width: 90%; 
+        min-height: auto; 
+        padding: 2vh 15px; 
+        justify-content: space-around; 
     }
-    /* Icon size for scroll indicator already uses clamp() */
+    .content-layout-area {
+        flex-direction: column; 
+        gap: 20px; 
+    }
+    .content-column, .info-image-placeholder { /* Both stack and take full width */
+        width: 100%; 
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .content-column { gap: 15px; } /* Gap within the column of title/text */
+    .info-title-block { padding: 15px; }
+    .info-title-block h2 { font-size: clamp(1.3em, 5vw, 1.8em); }
+    .info-text-block { 
+        text-align: left; 
+        flex-grow: 0; 
+        padding: 15px;
+    }
+    .info-image-placeholder { min-height: 25vh; }
+
+    /* Specific order for screens 3 and 5 on tablet */
+    #screen-3 .info-image-placeholder, /* Keep ID for specificity if needed, or make a generic modifier class */
+    #screen-5 .info-image-placeholder {
+        order: -1; 
+    }
 }
 
+/* General Responsive (Smaller phones) */
 @media (max-width: 480px) {
-    /* Further refinements for very small screens */
-    #screen-1 {
-        padding: 15px 5px; /* Reduced horizontal padding further */
-    }
-    .main-content-s1 {
-        gap: 10px; /* Further reduced gap */
-        width: 96%; /* Slightly more width, padding will control inset */
-    }
-    .title-block-s1, .text-block-s1 {
-        padding: 10px; /* Significantly reduced padding */
-    }
-    .screen {
-        font-size: 1.4em; 
-    }
-    .side-nav {
-        top: 15px; 
-        gap: 8px; 
-    }
-    .nav-dot {
-        width: 8px;
-        height: 8px;
-    }
-    #theme-switcher {
-        top: 15px; /* Align with new top nav or adjust if needed */
-        right: 10px;
-    }
-    #theme-icon-span {
-        font-size: 16px;
-    }
-     .scroll-indicator-s1 {
-        bottom: 15px; 
-    }
-}
+    /* Screen 1 Responsive */
+    #screen-1 { padding: 15px 5px; }
+    .main-content-s1 { gap: 10px; width: 96%; }
+    .title-block-s1, .text-block-s1 { padding: 10px; }
 
-/* Screen 2 specific styles - FINAL FINAL ATTEMPT */
-#screen-2 .main-content-s2 {
-    width: 90%;
-    max-width: 1600px; /* Reinstated max-width */
-    min-height: 100vh; /* Changed from 95vh to fill screen height */
-    padding: 8vh 0; /* Increased padding from 6vh for a wider top/bottom margin */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto; /* Ensure centering */
-    margin-right: auto;
-}
+    /* General .screen font size adjustment */
+    .screen { font-size: 1.4em; }
 
-#screen-2 .content-area-s2 {
-    display: flex;
-    flex-direction: row;
-    /* gap: 30px; We will use margins on children for precise gap control with calc() widths */
-    justify-content: space-between; 
-    width: 100%;
-    height: 100%; /* ADDED: Makes this area explicitly use 100% of parent's content height */
-    /* min-height: 93vh; REMOVED */
-    flex-grow: 1; /* RETAINED: Complements height: 100% in flex context */
-    align-items: stretch; 
-    box-sizing: border-box;
-}
+    /* Side Navigation Responsive */
+    .side-nav { top: 15px; gap: 8px; }
+    .nav-dot { width: 8px; height: 8px; }
 
-#screen-2 .left-column-s2 {
-    width: calc(50% - 15px); /* Adjusted from 45% for a 50/50 split */
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Reverted from 15px */
-    box-sizing: border-box;
-}
+    /* Theme Switcher Responsive */
+    #theme-switcher { top: 15px; right: 10px; }
+    #theme-icon-span { font-size: 16px; }
 
-#screen-2 .title-block-s2 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 20px 25px; /* Reverted from 10px 10px */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: center;
-    box-sizing: border-box;
-}
+    /* Screen 1 Scroll Indicator Responsive */
+    .scroll-indicator-s1 { bottom: 15px; }
 
-#screen-2 .title-block-s2 h2 {
-    font-size: clamp(1.4em, 2.8vw, 2.0em); 
-    margin: 0;
-    font-weight: 700; 
-}
-
-#screen-2 .text-block-s2 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px; /* Reverted from 10px */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: left;
-    flex-grow: 1; 
-    box-sizing: border-box;
-}
-
-#screen-2 .text-block-s2 p {
-    font-size: clamp(0.9em, 1.4vw, 1.1em); /* Standardized smaller size for s2-s6 */
-    line-height: 1.6; /* Standardized smaller size for s2-s6 */
-    margin: 0;
-}
-
-#screen-2 .image-placeholder-s2 {
-    width: calc(50% - 15px); /* Adjusted from 55% for a 50/50 split */
-    /* margin-left: 15px; /* Half the gap */
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* min-height: 60vh; REMOVED - will stretch due to parent's align-items: stretch */
-    border: 2px dashed var(--text-screen); 
-    opacity: 0.6; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-2 .image-placeholder-s2 p {
-    font-style: italic;
-    font-size: clamp(1em, 2.2vw, 1.2em); 
-    margin: 0;
-}
-
-/* Responsive adjustments for Screen 2 */
-@media (max-width: 768px) { /* Tablet and larger phones */
-    #screen-2 .main-content-s2 {
-        width: 90%; 
-        min-height: auto; 
-        padding: 2vh 15px; 
-        justify-content: space-around; 
-    }
-    #screen-2 .content-area-s2 {
-        flex-direction: column; 
-        gap: 20px; 
-    }
-
-    #screen-2 .left-column-s2,
-    #screen-2 .image-placeholder-s2 {
-        width: 100%; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #screen-2 .left-column-s2 {
-        gap: 15px;
-    }
-    #screen-2 .title-block-s2 {
-        padding: 15px;
-    }
-    #screen-2 .title-block-s2 h2 {
-        font-size: clamp(1.3em, 5vw, 1.8em); 
-    }
-    #screen-2 .text-block-s2 {
-        text-align: left; 
-        flex-grow: 0; 
-        padding: 15px;
-    }
-    #screen-2 .image-placeholder-s2 {
-        min-height: 25vh; 
-    }
-}
-
-@media (max-width: 480px) { /* Smaller phones */
-     #screen-2 .main-content-s2 {
+    /* Common Components for Screens 2-S6: Responsive */
+    .page-screen-content-wrapper {
         width: 95%; 
-        min-height: auto; 
         padding: 2vh 10px; 
-        justify-content: space-around; 
     }
-    #screen-2 .content-area-s2 {
-        gap: 15px; 
-    }
-    #screen-2 .title-block-s2,
-    /* #screen-2 .text-block-s2, */ /* Styling .text-block-s2 separately now */
-    #screen-2 .image-placeholder-s2 {
+    .content-layout-area { gap: 15px; }
+    .content-column { gap: 10px; } 
+    
+    .info-title-block, .info-image-placeholder { padding: 10px; }
+    
+    .info-text-block {
         padding: 10px; 
     }
-
-    #screen-2 .text-block-s2 {
-        padding: 10px; 
-        max-height: 38vh; 
-        overflow-y: auto; 
-        scrollbar-width: thin; 
-        scrollbar-color: var(--nav-dot-active-bg) var(--block-background-s1); 
-    }
-
-    #screen-2 .text-block-s2::-webkit-scrollbar {
-        width: 8px;
-    }
-    #screen-2 .text-block-s2::-webkit-scrollbar-track {
-        background: var(--block-background-s1); 
-        border-radius: 4px;
-    }
-    #screen-2 .text-block-s2::-webkit-scrollbar-thumb {
-        background-color: var(--nav-dot-active-bg);
-        border-radius: 4px;
-        border: 2px solid var(--block-background-s1); 
-    }
-
-     #screen-2 .left-column-s2 {
-        gap: 10px; 
-    }
-    #screen-2 .title-block-s2 h2 {
-        font-size: clamp(1.1em, 4.5vw, 1.5em); 
-    }
-    #screen-2 .text-block-s2 p {
-        font-size: 0.88em;  
-        line-height: 1.55; 
-    }
-    #screen-2 .image-placeholder-s2 {
-        min-height: 15vh; 
-    }
+    .info-text-block p { font-size: 0.88em; line-height: 1.55; }
+    
+    .info-image-placeholder { min-height: 15vh; }
+    /* order: -1 for S3/S5 image placeholder is inherited from 768px media query */
 }
 
-/* Screen 3 specific styles - Mirrored from Screen 2 */
-#screen-3 .main-content-s3 {
-    width: 90%; /* Changed from 95% to match screen 2 */
-    max-width: 1600px; /* Reinstated max-width */
-    min-height: 100vh; 
-    padding: 8vh 0; /* Increased padding from 6vh for a wider top/bottom margin */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-#screen-3 .content-area-s3 {
-    display: flex;
-    flex-direction: row; /* Image on left, text on right */
-    justify-content: space-between; 
-    width: 100%;
-    height: 100%; 
-    flex-grow: 1; 
-    align-items: stretch; 
-    box-sizing: border-box;
-}
-
-/* Right column for Screen 3 (contains title and text) */
-#screen-3 .right-column-s3 {
-    width: calc(50% - 15px); 
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-    box-sizing: border-box;
-}
-
-#screen-3 .title-block-s3 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 20px 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-3 .title-block-s3 h2 {
-    font-size: clamp(1.4em, 2.8vw, 2.0em); 
-    margin: 0;
-    font-weight: 700;  
-}
-
-#screen-3 .text-block-s3 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: left;
-    flex-grow: 1; 
-    box-sizing: border-box;
-}
-
-#screen-3 .text-block-s3 p {
-    font-size: clamp(0.9em, 1.4vw, 1.1em); /* Standardized smaller size for s2-s6 */
-    line-height: 1.6; /* Standardized smaller size for s2-s6 */
-    margin: 0;
-}
-
-/* Image placeholder for Screen 3 (on the left) */
-#screen-3 .image-placeholder-s3 {
-    width: calc(50% - 15px); 
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed var(--text-screen); 
-    opacity: 0.6; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-3 .image-placeholder-s3 p {
-    font-style: italic;
-    font-size: clamp(1em, 2.2vw, 1.2em); 
-    margin: 0;
-}
-
-/* Responsive adjustments for Screen 3 */
-@media (max-width: 768px) { /* Tablet and larger phones */
-    #screen-3 .main-content-s3 {
-        width: 90%; 
-        min-height: auto; 
-        padding: 2vh 15px; 
-        justify-content: space-around; 
-    }
-    #screen-3 .content-area-s3 {
-        flex-direction: column; 
-        gap: 20px; 
-    }
-
-    #screen-3 .right-column-s3, /* Corrected from left-column */
-    #screen-3 .image-placeholder-s3 {
-        width: 100%; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #screen-3 .right-column-s3 { /* Corrected from left-column */
-        gap: 15px;
-    }
-    #screen-3 .title-block-s3 {
-        padding: 15px;
-    }
-    #screen-3 .title-block-s3 h2 {
-        font-size: clamp(1.3em, 5vw, 1.8em); 
-    }
-    #screen-3 .text-block-s3 {
-        text-align: left; 
-        flex-grow: 0; 
-        padding: 15px;
-    }
-    #screen-3 .image-placeholder-s3 {
-        min-height: 25vh; 
-        order: -1;
-    }
-}
-
-@media (max-width: 480px) { /* Smaller phones */
-     #screen-3 .main-content-s3 {
-        width: 95%; 
-        min-height: auto; 
-        padding: 2vh 10px; 
-        justify-content: space-around; 
-    }
-    #screen-3 .content-area-s3 {
-        gap: 15px; 
-    }
-    #screen-3 .title-block-s3,
-    /* #screen-3 .text-block-s3, */ 
-    #screen-3 .image-placeholder-s3 {
-        padding: 10px; 
-    }
-
-    #screen-3 .text-block-s3 {
-        padding: 10px; 
-        max-height: 38vh; 
-        overflow-y: auto; 
-        scrollbar-width: thin; 
-        scrollbar-color: var(--nav-dot-active-bg) var(--block-background-s1); 
-    }
-
-    #screen-3 .text-block-s3::-webkit-scrollbar {
-        width: 8px;
-    }
-    #screen-3 .text-block-s3::-webkit-scrollbar-track {
-        background: var(--block-background-s1); 
-        border-radius: 4px;
-    }
-    #screen-3 .text-block-s3::-webkit-scrollbar-thumb {
-        background-color: var(--nav-dot-active-bg);
-        border-radius: 4px;
-        border: 2px solid var(--block-background-s1); 
-    }
-
-     #screen-3 .right-column-s3 { /* Corrected from left-column */
-        gap: 10px; 
-    }
-    #screen-3 .title-block-s3 h2 {
-        font-size: clamp(1.1em, 4.5vw, 1.5em); 
-    }
-    #screen-3 .text-block-s3 p {
-        font-size: 0.88em;  
-        line-height: 1.55; 
-    }
-    #screen-3 .image-placeholder-s3 {
-        min-height: 15vh; 
-    }
-}
-
-/* Screen 4 specific styles - Mirrored from Screen 2 */
-#screen-4 .main-content-s4 {
-    width: 90%;
-    max-width: 1600px; 
-    min-height: 100vh; 
-    padding: 8vh 0; 
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-#screen-4 .content-area-s4 {
-    display: flex;
-    flex-direction: row; /* Text on left, image on right */
-    justify-content: space-between; 
-    width: 100%;
-    height: 100%; 
-    flex-grow: 1; 
-    align-items: stretch; 
-    box-sizing: border-box;
-}
-
-/* Left column for Screen 4 (contains title and text) */
-#screen-4 .left-column-s4 {
-    width: calc(50% - 15px); 
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-    box-sizing: border-box;
-}
-
-#screen-4 .title-block-s4 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 20px 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-4 .title-block-s4 h2 {
-    font-size: clamp(1.4em, 2.8vw, 2.0em); 
-    margin: 0;
-    font-weight: 700;  
-}
-
-#screen-4 .text-block-s4 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: left;
-    flex-grow: 1; 
-    box-sizing: border-box;
-}
-
-#screen-4 .text-block-s4 p {
-    /* font-size: clamp(0.95em, 1.5vw, 1.15em); */ /* Default for s2-s6 paragraphs */
-    font-size: clamp(0.9em, 1.4vw, 1.1em); /* Slightly smaller for s4 to fit text */
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Image placeholder for Screen 4 (on the right) */
-#screen-4 .image-placeholder-s4 {
-    width: calc(50% - 15px); 
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed var(--text-screen); 
-    opacity: 0.6; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-4 .image-placeholder-s4 p {
-    font-style: italic;
-    font-size: clamp(1em, 2.2vw, 1.2em); 
-    margin: 0;
-}
-
-/* Responsive adjustments for Screen 4 */
-@media (max-width: 768px) { /* Tablet and larger phones */
-    #screen-4 .main-content-s4 {
-        width: 90%; 
-        min-height: auto; 
-        padding: 2vh 15px; 
-        justify-content: space-around; 
-    }
-    #screen-4 .content-area-s4 {
-        flex-direction: column; 
-        gap: 20px; 
-    }
-
-    #screen-4 .left-column-s4,
-    #screen-4 .image-placeholder-s4 {
-        width: 100%; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #screen-4 .left-column-s4 {
-        gap: 15px;
-    }
-    #screen-4 .title-block-s4 {
-        padding: 15px;
-    }
-    #screen-4 .title-block-s4 h2 {
-        font-size: clamp(1.3em, 5vw, 1.8em); 
-    }
-    #screen-4 .text-block-s4 {
-        text-align: left; 
-        flex-grow: 0; 
-        padding: 15px;
-    }
-    #screen-4 .image-placeholder-s4 {
-        min-height: 25vh; 
-    }
-}
-
-@media (max-width: 480px) { /* Smaller phones */
-     #screen-4 .main-content-s4 {
-        width: 95%; 
-        min-height: auto; 
-        padding: 2vh 10px; 
-        justify-content: space-around; 
-    }
-    #screen-4 .content-area-s4 {
-        gap: 15px; 
-    }
-    #screen-4 .title-block-s4,
-    /* #screen-4 .text-block-s4, */ 
-    #screen-4 .image-placeholder-s4 {
-        padding: 10px; 
-    }
-
-    #screen-4 .text-block-s4 {
-        padding: 10px; 
-        max-height: 38vh; 
-        overflow-y: auto; 
-        scrollbar-width: thin; 
-        scrollbar-color: var(--nav-dot-active-bg) var(--block-background-s1); 
-    }
-
-    #screen-4 .text-block-s4::-webkit-scrollbar {
-        width: 8px;
-    }
-    #screen-4 .text-block-s4::-webkit-scrollbar-track {
-        background: var(--block-background-s1); 
-        border-radius: 4px;
-    }
-    #screen-4 .text-block-s4::-webkit-scrollbar-thumb {
-        background-color: var(--nav-dot-active-bg);
-        border-radius: 4px;
-        border: 2px solid var(--block-background-s1); 
-    }
-
-     #screen-4 .left-column-s4 {
-        gap: 10px; 
-    }
-    #screen-4 .title-block-s4 h2 {
-        font-size: clamp(1.1em, 4.5vw, 1.5em); 
-    }
-    #screen-4 .text-block-s4 p {
-        font-size: 0.88em;  
-        line-height: 1.55; 
-    }
-    #screen-4 .image-placeholder-s4 {
-        min-height: 15vh; 
-    }
-}
-
-/* Screen 5 specific styles - Mirrored from Screen 3 */
-#screen-5 .main-content-s5 {
-    width: 90%;
-    max-width: 1600px; 
-    min-height: 100vh; 
-    padding: 8vh 0; 
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-#screen-5 .content-area-s5 {
-    display: flex;
-    flex-direction: row; /* Image on left, text on right */
-    justify-content: space-between; 
-    width: 100%;
-    height: 100%; 
-    flex-grow: 1; 
-    align-items: stretch; 
-    box-sizing: border-box;
-}
-
-/* Right column for Screen 5 (contains title and text) */
-#screen-5 .right-column-s5 {
-    width: calc(50% - 15px); 
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-    box-sizing: border-box;
-}
-
-#screen-5 .title-block-s5 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 20px 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-5 .title-block-s5 h2 {
-    font-size: clamp(1.4em, 2.8vw, 2.0em); 
-    margin: 0;
-    font-weight: 700; 
-}
-
-#screen-5 .text-block-s5 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: left;
-    flex-grow: 1; 
-    box-sizing: border-box;
-}
-
-#screen-5 .text-block-s5 p {
-    font-size: clamp(0.9em, 1.4vw, 1.1em); /* Standardized smaller size for s2-s6 */
-    line-height: 1.6; /* Standardized smaller size for s2-s6 */
-    margin: 0;
-}
-
-/* Image placeholder for Screen 5 (on the left) */
-#screen-5 .image-placeholder-s5 {
-    width: calc(50% - 15px); 
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed var(--text-screen); 
-    opacity: 0.6; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-5 .image-placeholder-s5 p {
-    font-style: italic;
-    font-size: clamp(1em, 2.2vw, 1.2em); 
-    margin: 0;
-}
-
-/* Responsive adjustments for Screen 5 */
-@media (max-width: 768px) { /* Tablet and larger phones */
-    #screen-5 .main-content-s5 {
-        width: 90%; /* Ensure consistent width handling on mobile */
-        min-height: auto; /* Allow height to be based on content, not fixed 100vh */
-        padding: 2vh 15px; /* Reduced vertical padding, maintained some horizontal */
-        justify-content: space-around; /* Better distribute stacked items vertically */
-    }
-    #screen-5 .content-area-s5 {
-        flex-direction: column; 
-        gap: 20px; /* Reduced from 25px */
-    }
-
-    #screen-5 .right-column-s5,
-    #screen-5 .image-placeholder-s5 {
-        width: 100%; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #screen-5 .right-column-s5 {
-        gap: 15px; /* Reduced from 20px (desktop default) */
-    }
-    #screen-5 .title-block-s5 {
-        padding: 15px; /* Reduced from desktop padding */
-    }
-    #screen-5 .title-block-s5 h2 {
-        font-size: clamp(1.3em, 5vw, 1.8em); 
-    }
-    #screen-5 .text-block-s5 {
-        text-align: left; 
-        flex-grow: 0; /* Allow height to be determined by content in stacked view */
-        padding: 15px; /* Reduced from desktop padding */
-    }
-    #screen-5 .image-placeholder-s5 {
-        min-height: 25vh; /* Reduced from 35vh */
-        order: -1; /* Ensure image placeholder appears on top when stacked */
-    }
-}
-
-@media (max-width: 480px) { /* Smaller phones */
-     #screen-5 .main-content-s5 {
-        width: 95%; 
-        min-height: auto; 
-        padding: 2vh 10px; 
-        justify-content: space-around; 
-    }
-    #screen-5 .content-area-s5 {
-        gap: 15px; 
-    }
-    #screen-5 .title-block-s5,
-    /* #screen-5 .text-block-s5, */ /* Styling .text-block-s5 separately now */
-    #screen-5 .image-placeholder-s5 {
-        padding: 10px; 
-    }
-
-    #screen-5 .text-block-s5 {
-        padding: 10px; /* Retain padding */
-        max-height: 38vh; /* Increased from 30vh to better suit longer text */
-        overflow-y: auto; /* Enable vertical scroll if content exceeds max-height */
-        scrollbar-width: thin; /* For Firefox */
-        scrollbar-color: var(--nav-dot-active-bg) var(--block-background-s1); /* For Firefox */
-    }
-
-    /* WebKit scrollbar styling */
-    #screen-5 .text-block-s5::-webkit-scrollbar {
-        width: 8px;
-    }
-    #screen-5 .text-block-s5::-webkit-scrollbar-track {
-        background: var(--block-background-s1); /* Or a lighter/darker shade of it */
-        border-radius: 4px;
-    }
-    #screen-5 .text-block-s5::-webkit-scrollbar-thumb {
-        background-color: var(--nav-dot-active-bg);
-        border-radius: 4px;
-        border: 2px solid var(--block-background-s1); /* Creates padding around thumb */
-    }
-
-     #screen-5 .right-column-s5 {
-        gap: 10px; 
-    }
-    #screen-5 .title-block-s5 h2 {
-        font-size: clamp(1.1em, 4.5vw, 1.5em); 
-    }
-    #screen-5 .text-block-s5 p {
-        font-size: 0.88em; /* Slightly larger font now that it can scroll */ 
-        line-height: 1.55; /* Adjusted line height */
-    }
-    #screen-5 .image-placeholder-s5 {
-        min-height: 15vh; 
-    }
-}
-
-/* Screen 6 specific styles - Mirrored from Screen 2 */
-#screen-6 .main-content-s6 {
-    width: 90%;
-    max-width: 1600px; 
-    min-height: 100vh; 
-    padding: 8vh 0; 
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto; 
-    margin-right: auto;
-}
-
-#screen-6 .content-area-s6 {
-    display: flex;
-    flex-direction: row; /* Text on left, image on right */
-    justify-content: space-between; 
-    width: 100%;
-    height: 100%; 
-    flex-grow: 1; 
-    align-items: stretch; 
-    box-sizing: border-box;
-}
-
-/* Left column for Screen 6 (contains title and text) */
-#screen-6 .left-column-s6 {
-    width: calc(50% - 15px); 
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-    box-sizing: border-box;
-}
-
-#screen-6 .title-block-s6 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 20px 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-6 .title-block-s6 h2 {
-    font-size: clamp(1.4em, 2.8vw, 2.0em); 
-    margin: 0;
-    font-weight: 700; 
-}
-
-#screen-6 .text-block-s6 {
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    width: 100%; 
-    text-align: left;
-    flex-grow: 1; 
-    box-sizing: border-box;
-}
-
-#screen-6 .text-block-s6 p {
-    font-size: clamp(0.9em, 1.4vw, 1.1em); /* Standardized smaller size for s2-s6 */
-    line-height: 1.6; /* Standardized smaller size for s2-s6 */
-    margin: 0;
-}
-
-/* Image placeholder for Screen 6 (on the right) */
-#screen-6 .image-placeholder-s6 {
-    width: calc(50% - 15px); 
-    background-color: var(--block-background-s1);
-    color: var(--text-screen);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed var(--text-screen); 
-    opacity: 0.6; 
-    text-align: center;
-    box-sizing: border-box;
-}
-
-#screen-6 .image-placeholder-s6 p {
-    font-style: italic;
-    font-size: clamp(1em, 2.2vw, 1.2em); 
-    margin: 0;
-}
-
-/* Responsive adjustments for Screen 6 */
-@media (max-width: 768px) { /* Tablet and larger phones */
-    #screen-6 .main-content-s6 {
-        width: 90%; 
-        min-height: auto; 
-        padding: 2vh 15px; 
-        justify-content: space-around; 
-    }
-    #screen-6 .content-area-s6 {
-        flex-direction: column; 
-        gap: 20px; 
-    }
-
-    #screen-6 .left-column-s6,
-    #screen-6 .image-placeholder-s6 {
-        width: 100%; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-    #screen-6 .left-column-s6 {
-        gap: 15px;
-    }
-    #screen-6 .title-block-s6 {
-        padding: 15px;
-    }
-    #screen-6 .title-block-s6 h2 {
-        font-size: clamp(1.3em, 5vw, 1.8em); 
-    }
-    #screen-6 .text-block-s6 {
-        text-align: left; 
-        flex-grow: 0; 
-        padding: 15px;
-    }
-    #screen-6 .image-placeholder-s6 {
-        min-height: 25vh; 
-    }
-}
-
-@media (max-width: 480px) { /* Smaller phones */
-     #screen-6 .main-content-s6 {
-        width: 95%; 
-        min-height: auto; 
-        padding: 2vh 10px; 
-        justify-content: space-around; 
-    }
-    #screen-6 .content-area-s6 {
-        gap: 15px; 
-    }
-    #screen-6 .title-block-s6,
-    /* #screen-6 .text-block-s6, */ /* Styling .text-block-s6 separately now */
-    #screen-6 .image-placeholder-s6 {
-        padding: 10px; 
-    }
-
-    #screen-6 .text-block-s6 {
-        padding: 10px; 
-        max-height: 38vh; 
-        overflow-y: auto; 
-        scrollbar-width: thin; 
-        scrollbar-color: var(--nav-dot-active-bg) var(--block-background-s1); 
-    }
-
-    #screen-6 .text-block-s6::-webkit-scrollbar {
-        width: 8px;
-    }
-    #screen-6 .text-block-s6::-webkit-scrollbar-track {
-        background: var(--block-background-s1); 
-        border-radius: 4px;
-    }
-    #screen-6 .text-block-s6::-webkit-scrollbar-thumb {
-        background-color: var(--nav-dot-active-bg);
-        border-radius: 4px;
-        border: 2px solid var(--block-background-s1); 
-    }
-
-     #screen-6 .left-column-s6 {
-        gap: 10px; 
-    }
-    #screen-6 .title-block-s6 h2 {
-        font-size: clamp(1.1em, 4.5vw, 1.5em); 
-    }
-    #screen-6 .text-block-s6 p {
-        font-size: 0.88em;  
-        line-height: 1.55; 
-    }
-    #screen-6 .image-placeholder-s6 {
-        min-height: 15vh; 
-    }
-}
-
+/* === Font Application === */
 .title-block-s1 h1,
-.title-block-s2 h2,
-.title-block-s3 h2,
-.title-block-s4 h2,
-.title-block-s5 h2,
-.title-block-s6 h2 {
-    font-family: 'Rowdies', sans-serif; /* Changed font to Rowdies for all titles */
-    /* Keep existing font-size, margin, font-weight (now 700), display properties */
+.info-title-block h2 { /* This is now the primary rule for S2-S6 titles */
+    font-family: 'Rowdies', sans-serif;
 }
 
-/* Ensure paragraph text inherits Saira or is explicitly set if needed */
-/* Most p tags should inherit Saira from the body. We can check specific cases if necessary. */
+/* The old grouped selector for .title-block-sX h2 will be removed if present, or this rule is sufficient */

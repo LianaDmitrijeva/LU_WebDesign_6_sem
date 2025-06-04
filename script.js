@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener for theme switcher button
     themeSwitcher.addEventListener('click', () => {
-        const currentTheme = document.body.classList.contains('night-theme') ? 'night' : 'day';
-        if (currentTheme === 'night') {
+        if (document.body.classList.contains('night-theme')) {
             setTheme('day');
         } else {
             setTheme('night');
